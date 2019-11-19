@@ -12,8 +12,8 @@ spec.ios.vendored_frameworks 	= 'AP_PaySDK.framework'
 spec.swift_version 				= '4.0'
 spc.pod_target_xcconfig 		= { 'SWIFT_VERSION' => '4.0' }
 spc.platform     				= :ios, "10.0"
-spec.source            			= { :git => "https://github.com/vaibhav1don/sampleSDK.git", :tag => "1.0.0" }
-# { :type => "zip", :http => 'https://mikesheen22.000webhostapp.com/pays/PaySDK-swift4.zip' }
+# spec.source            			= { :git => "https://github.com/vaibhav1don/sampleSDK.git", :tag => "1.0.0" }
+spec.source            			= { :type => "zip", :http => 'https://test.paydollar.com/b2cDemo/PaySDK1.zip' }
 spec.exclude_files 				= "Classes/Exclude"
 
 end
