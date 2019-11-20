@@ -32,6 +32,6 @@ spec.source            			= { :type => "zip", :http => 'https://raw.githubuserco
 spec.exclude_files 				= "Classes/Exclude"
 spec.requires_arc          		= true
 spec.swift_versions 			= ['4.0', '4.2', '5.0', '5.1']
-spec.platform 					= :ios
+spec.platform 					= :ios, "10.0"
 end
 
