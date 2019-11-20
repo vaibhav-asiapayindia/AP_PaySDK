@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
 spec.name             			= 'AP_PaySDK'
-spec.version          			= '0.0.32'
+spec.version          			= '0.0.33'
 spec.license      	  			= { :type => "MIT", :file => "LICENSE" }
 spec.summary          			= 'Pod for PayDollar SDK'
 spec.homepage         			= 'https://www.asiapay.com'
