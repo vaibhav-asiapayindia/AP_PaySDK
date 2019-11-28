@@ -2,16 +2,14 @@
 //  AP_PaySDK.h
 //  AP_PaySDK
 //
-//  Created by AsiaPay Limited on 30/10/19.
-//  Copyright © 2019 AsiaPay Limited. All rights reserved.
+//  Created by Vaibhav on 28/11/19.
+//  Copyright © 2019 Vaibhav. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "Wrapper.h"
 #import "WebViewJavascriptBridge.h"
 #import <CommonCrypto/CommonHMAC.h>
-#import "callBackFromAliPay.h"
-
+#import "Wrapper.h"
 
 //! Project version number for AP_PaySDK.
 FOUNDATION_EXPORT double AP_PaySDKVersionNumber;
