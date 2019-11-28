@@ -1,0 +1,19 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "commitish" : "1bc447ca30829c40adaeb3d02f25709ec26e5803",
+  "iOS" : [
+    {
+      "name" : "AP_PaySDK",
+      "hash" : "5032cc01f9076937153aeb7c4d8f80ec1985ad5b0fb5eab925f7995509eaeac1",
+      "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
+    }
+  ]
+}
