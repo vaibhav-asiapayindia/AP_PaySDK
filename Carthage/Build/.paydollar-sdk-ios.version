@@ -8,11 +8,11 @@
   "tvOS" : [
 
   ],
-  "commitish" : "29bdb11d995f2e2c3e88872a4a851cf32f342c7b",
+  "commitish" : "f2e25f08a1cd484946916d6bd069175be8e640f2",
   "iOS" : [
     {
       "name" : "AP_PaySDK",
-      "hash" : "63d0895ed7ef20cfbcdf2bdaaa588e5a90ffb03926a6be9947b612448e9c6143",
+      "hash" : "ecc8a32bd24445407920c6e296fe85a2f8515873a9e2661ed6ff8cb52a3b2ae9",
       "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
     }
   ]
