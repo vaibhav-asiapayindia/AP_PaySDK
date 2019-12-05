@@ -12,7 +12,7 @@
   "iOS" : [
     {
       "name" : "AP_PaySDK",
-      "hash" : "ecc8a32bd24445407920c6e296fe85a2f8515873a9e2661ed6ff8cb52a3b2ae9",
+      "hash" : "c12d6b2101684e6aac1f54c1fb1fc7f4883e02d4c56c10593fad080e92182c98",
       "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
     }
   ]

@@ -263,6 +263,21 @@ typedef SWIFT_ENUM(NSInteger, PayGate, closed) {
 
 SWIFT_CLASS("_TtC9AP_PaySDK9PayResult")
 @interface PayResult : NSObject
+@property (nonatomic, copy) NSString * _Null_unspecified amount;
+@property (nonatomic, copy) NSString * _Null_unspecified successCode;
+@property (nonatomic, copy) NSString * _Nullable maskedCardNo;
+@property (nonatomic, copy) NSString * _Null_unspecified authId;
+@property (nonatomic, copy) NSString * _Null_unspecified cardHolder;
+@property (nonatomic, copy) NSString * _Null_unspecified currencyCode;
+@property (nonatomic, copy) NSString * _Null_unspecified errMsg;
+@property (nonatomic, copy) NSString * _Null_unspecified ord;
+@property (nonatomic, copy) NSString * _Null_unspecified payRef;
+@property (nonatomic, copy) NSString * _Null_unspecified prc;
+@property (nonatomic, copy) NSString * _Null_unspecified ref;
+@property (nonatomic, copy) NSString * _Null_unspecified src;
+@property (nonatomic, copy) NSString * _Null_unspecified transactionTime;
+@property (nonatomic, copy) NSString * _Null_unspecified descriptionStr;
+@property (nonatomic, copy) NSString * _Null_unspecified payMethod;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -599,6 +614,21 @@ typedef SWIFT_ENUM(NSInteger, PayGate, closed) {
 
 SWIFT_CLASS("_TtC9AP_PaySDK9PayResult")
 @interface PayResult : NSObject
+@property (nonatomic, copy) NSString * _Null_unspecified amount;
+@property (nonatomic, copy) NSString * _Null_unspecified successCode;
+@property (nonatomic, copy) NSString * _Nullable maskedCardNo;
+@property (nonatomic, copy) NSString * _Null_unspecified authId;
+@property (nonatomic, copy) NSString * _Null_unspecified cardHolder;
+@property (nonatomic, copy) NSString * _Null_unspecified currencyCode;
+@property (nonatomic, copy) NSString * _Null_unspecified errMsg;
+@property (nonatomic, copy) NSString * _Null_unspecified ord;
+@property (nonatomic, copy) NSString * _Null_unspecified payRef;
+@property (nonatomic, copy) NSString * _Null_unspecified prc;
+@property (nonatomic, copy) NSString * _Null_unspecified ref;
+@property (nonatomic, copy) NSString * _Null_unspecified src;
+@property (nonatomic, copy) NSString * _Null_unspecified transactionTime;
+@property (nonatomic, copy) NSString * _Null_unspecified descriptionStr;
+@property (nonatomic, copy) NSString * _Null_unspecified payMethod;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -939,6 +969,21 @@ typedef SWIFT_ENUM(NSInteger, PayGate, closed) {
 
 SWIFT_CLASS("_TtC9AP_PaySDK9PayResult")
 @interface PayResult : NSObject
+@property (nonatomic, copy) NSString * _Null_unspecified amount;
+@property (nonatomic, copy) NSString * _Null_unspecified successCode;
+@property (nonatomic, copy) NSString * _Nullable maskedCardNo;
+@property (nonatomic, copy) NSString * _Null_unspecified authId;
+@property (nonatomic, copy) NSString * _Null_unspecified cardHolder;
+@property (nonatomic, copy) NSString * _Null_unspecified currencyCode;
+@property (nonatomic, copy) NSString * _Null_unspecified errMsg;
+@property (nonatomic, copy) NSString * _Null_unspecified ord;
+@property (nonatomic, copy) NSString * _Null_unspecified payRef;
+@property (nonatomic, copy) NSString * _Null_unspecified prc;
+@property (nonatomic, copy) NSString * _Null_unspecified ref;
+@property (nonatomic, copy) NSString * _Null_unspecified src;
+@property (nonatomic, copy) NSString * _Null_unspecified transactionTime;
+@property (nonatomic, copy) NSString * _Null_unspecified descriptionStr;
+@property (nonatomic, copy) NSString * _Null_unspecified payMethod;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -1275,6 +1320,21 @@ typedef SWIFT_ENUM(NSInteger, PayGate, closed) {
 
 SWIFT_CLASS("_TtC9AP_PaySDK9PayResult")
 @interface PayResult : NSObject
+@property (nonatomic, copy) NSString * _Null_unspecified amount;
+@property (nonatomic, copy) NSString * _Null_unspecified successCode;
+@property (nonatomic, copy) NSString * _Nullable maskedCardNo;
+@property (nonatomic, copy) NSString * _Null_unspecified authId;
+@property (nonatomic, copy) NSString * _Null_unspecified cardHolder;
+@property (nonatomic, copy) NSString * _Null_unspecified currencyCode;
+@property (nonatomic, copy) NSString * _Null_unspecified errMsg;
+@property (nonatomic, copy) NSString * _Null_unspecified ord;
+@property (nonatomic, copy) NSString * _Null_unspecified payRef;
+@property (nonatomic, copy) NSString * _Null_unspecified prc;
+@property (nonatomic, copy) NSString * _Null_unspecified ref;
+@property (nonatomic, copy) NSString * _Null_unspecified src;
+@property (nonatomic, copy) NSString * _Null_unspecified transactionTime;
+@property (nonatomic, copy) NSString * _Null_unspecified descriptionStr;
+@property (nonatomic, copy) NSString * _Null_unspecified payMethod;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
