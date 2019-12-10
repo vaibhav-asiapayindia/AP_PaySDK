@@ -8,6 +8,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @protocol callBackFromAliPay <NSObject>
 - (void) getResponse:(NSDictionary *_Nonnull) resultDic;
 @end
@@ -19,9 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *order_id;
 @property (nonatomic, strong) NSString *order_ref;
 @property (nonatomic) id <callBackFromAliPay> delegate;
+- (BOOL) bugged;
 - (void) payOrder : (NSString *) param;
 - (void) payOrderDynamicLaunch : (NSString *) param;
 - (void) processOrder : (NSURL *) url;
+- (void) processWechat : (NSArray *) arr;
 
 @end
 

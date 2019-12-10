@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "WebViewJavascriptBridge.h"
-#import <CommonCrypto/CommonHMAC.h>
 #import "Wrapper.h"
+#import <CommonCrypto/CommonHMAC.h>
+//#import "Wrapper1.h"
+
 
 //! Project version number for AP_PaySDK.
 FOUNDATION_EXPORT double AP_PaySDKVersionNumber;
