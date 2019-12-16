@@ -12,7 +12,7 @@
 
 ## Features
 - Direct Client Side Connection
-- Client Post through Browser Side Connection
+- WebView Payment - Client Post through Browser Side Connection
 - Payment via Alipay
 
 ## Requirements
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
 Creating PayData for payment and process.
 
 
-#### Hosted Payment
+#### WebView Payment
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.WEBVIEW,
                                 envType: EnvType.SANDBOX,
