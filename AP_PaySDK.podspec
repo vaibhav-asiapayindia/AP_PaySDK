@@ -13,9 +13,3 @@ spec.exclude_files 				= "Classes/Exclude"
 spec.requires_arc          		= true
 spec.platform 					= :ios, "11.0"
 end
-
-# spec.source_files 				= 'AP_PaySDK/*.swift'
-# spec.public_header_files 		= 'AP_PaySDK/**/*.h'
-# s.source_files  = "Sources/**/*"
-# s.private_header_files = "Sources/Support/**/*.h"
-# s.frameworks  = "UIKit"
