@@ -1,3 +1,5 @@
+# Be sure to run `pod lib lint AP_PaySDK.podspec'
+
 Pod::Spec.new do |spec|
 spec.name						= 'AP_PaySDK'
 spec.version					= '0.0.47'
