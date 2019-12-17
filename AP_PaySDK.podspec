@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.author                 = { "Asiapay Limited" => "vaibhav.meshram@asiapay.com" }
   spec.swift_versions         = ["4", "4.1", "4.2", "5", "5.1"]
   spec.vendored_frameworks    = "AP_PaySDK.framework"
-  spec.source                 = { :git => "https://github.com/vaibhav-asiapayindia/AP_PaySDK.git", :tag => "1.0.2"}
+  spec.source                 = { :git => "https://github.com/vaibhav-asiapayindia/AP_PaySDK.git", :tag => "v1.0.2"}
   spec.platform               = :ios, "11.0"
   spec.ios.deployment_target  = "11.0"
 end
