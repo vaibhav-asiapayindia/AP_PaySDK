@@ -10,7 +10,6 @@ spec.ios.deployment_target		= '11.0'
 spec.swift_versions				= ['4', '4.1', '4.2', '5', '5.1']
 spec.vendored_frameworks		= 'AP_PaySDK.framework'
 spec.source						= { :type => "zip", :http => 'https://raw.githubusercontent.com/vaibhav-asiapayindia/AP_PaySDK/master/PaySDK.zip'}
-spec.exclude_files				= "Classes/Exclude"
 spec.requires_arc				= true
 spec.platform					= :ios, "11.0"
 end
