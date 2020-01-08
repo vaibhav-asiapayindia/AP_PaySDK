@@ -1,15 +1,17 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AP_PaySDK
 @_exported import AP_PaySDK
 import AdSupport
 import CommonCrypto
+import CoreGraphics
 import CoreLocation
 import Darwin
 import Dispatch
 import Foundation
 import MobileCoreServices
 import PassKit
+import QuartzCore
 import Security
 import StoreKit
 import Swift
@@ -35,7 +37,8 @@ import WebKit
   @objc override dynamic public init()
   @objc deinit
 }
-@objc open class ThreeDSParams : ObjectiveC.NSObject {
+@objc @available(iOS 11.0, *)
+open class ThreeDSParams : ObjectiveC.NSObject {
   @objc public var apiUsername: Swift.String?
   @objc public var apiPassword: Swift.String?
   @objc public var threeDSCustomerEmail: Swift.String?
@@ -106,26 +109,6 @@ import WebKit
     get
   }
 }
-@objc public enum payMethod : Swift.Int {
-  case ALL
-  case CREDIT_CARD
-  case VISA
-  case MASTER_CARD
-  case JAPAN_CARD
-  case AMERICAN_CARD
-  case DINERS
-  case ALIPAYHKAPP
-  case ALIPAYCNAPP
-  case ALIPAYAPP
-  case APPLEPAY
-  case WECHATAPP
-  case THREEDS2
-  public typealias RawValue = Swift.Int
-  public init?(rawValue: Swift.Int)
-  public var rawValue: Swift.Int {
-    get
-  }
-}
 @objc public enum payType : Swift.Int {
   case NORMAL_PAYMENT
   case HOLD_PAYMENT
@@ -164,7 +147,7 @@ import WebKit
     get
   }
 }
-@objc public enum currencyCode : Swift.Int {
+@objc public enum CurrencyCode : Swift.Int {
   case HKD
   case USD
   case SGD
@@ -228,15 +211,18 @@ import WebKit
 }
 infix operator <- : DefaultPrecedence
 infix operator >>> : DefaultPrecedence
+@available(iOS 10.0, *)
 @objc(PaySDK) open class PaySDK : ObjectiveC.NSObject {
   @objc public static var shared: AP_PaySDK.PaySDK
   @objc public var delegate: AP_PaySDK.PaySDKDelegate?
   @objc public var paymentDetails: AP_PaySDK.PayData!
   @objc public var uiCustomization: AP_PaySDK.UiCustomization?
   @objc override dynamic public init()
+  public func setPublicKey(str: Swift.String)
   @objc public func process()
   @objc public func invalidateToken()
   @objc public func processOrder(url: Foundation.URL)
+  @objc public func processOrderWeChat(url: Foundation.URL) -> Swift.Bool
   @objc deinit
 }
 @objc public protocol PaySDKDelegate {
@@ -248,7 +234,7 @@ extension UIColor {
 extension UIButton {
   @objc dynamic public func setApplePayButton(btnType: AP_PaySDK.ApplePayButtonType, btnStyle: AP_PaySDK.ApplePayButtonStyle, view: UIKit.UIView)
 }
-@objc public enum ults_ButtonType : Swift.Int {
+@objc public enum PaySDKButtonType : Swift.Int {
   case SUBMIT
   case CONTINUE
   case NEXT
@@ -260,7 +246,7 @@ extension UIButton {
     get
   }
 }
-@objc public protocol ults_Customization {
+@objc public protocol PaySDKCustomization {
   @objc func setTextFontName(_ fontName: Swift.String) throws
   @objc func setTextColor(_ hexColorCode: Swift.String) throws
   @objc func setTextFontSize(_ fontSize: Swift.Int) throws
@@ -268,19 +254,19 @@ extension UIButton {
   @objc func getTextColor() -> Swift.String
   @objc func getTextFontSize() -> Swift.Int
 }
-@objc public protocol ults_ButtonCustomization : AP_PaySDK.ults_Customization {
+@objc public protocol PaySDKButtonCustomization : AP_PaySDK.PaySDKCustomization {
   @objc func setBackgroundColor(_ hexColorCode: Swift.String) throws
   @objc func setCornerRadius(_ cornerRadius: Swift.Int) throws
   @objc func getBackgroundColor() -> Swift.String
   @objc func getCornerRadius() -> Swift.Int
 }
-@objc public protocol ults_ToolbarCustomization : AP_PaySDK.ults_Customization {
+@objc public protocol PaySDKToolbarCustomization : AP_PaySDK.PaySDKCustomization {
   @objc func setBackgroundColor(_ hexColorCode: Swift.String) throws
   @objc func setHeaderText(_ headerText: Swift.String) throws
   @objc func getBackgroundColor() -> Swift.String
   @objc func getHeaderText() -> Swift.String
 }
-@objc public protocol ults_LabelCustomization : AP_PaySDK.ults_Customization {
+@objc public protocol PaySDKLabelCustomization : AP_PaySDK.PaySDKCustomization {
   @objc func setHeadingTextColor(_ hexColorCode: Swift.String) throws
   @objc func setHeadingTextFontName(_ fontName: Swift.String) throws
   @objc func setHeadingTextFontSize(_ fontSize: Swift.Int) throws
@@ -288,7 +274,7 @@ extension UIButton {
   @objc func getHeadingTextFontName() -> Swift.String
   @objc func getHeadingTextFontSize() -> Swift.Int
 }
-@objc public protocol ults_TextBoxCustomization : AP_PaySDK.ults_Customization {
+@objc public protocol PaySDKTextBoxCustomization : AP_PaySDK.PaySDKCustomization {
   @objc func setBorderWidth(_ borderWidth: Swift.Int) throws
   @objc func setBorderColor(_ hexColorCode: Swift.String) throws
   @objc func setCornerRadius(_ cornerRadius: Swift.Int) throws
@@ -296,17 +282,20 @@ extension UIButton {
   @objc func getBorderColor() -> Swift.String
   @objc func getCornerRadius() -> Swift.Int
 }
-@objc public protocol ults_UiCustomization {
-  @objc func setButtonCustomization(_ buttonCustomization: AP_PaySDK.ults_ButtonCustomization, _ buttonType: AP_PaySDK.ults_ButtonType) throws
-  @objc func setToolbarCustomization(_ toolbarCustomization: AP_PaySDK.ults_ToolbarCustomization) throws
-  @objc func setLabelCustomization(_ labelCustomization: AP_PaySDK.ults_LabelCustomization) throws
-  @objc func setTextBoxCustomization(_ textBoxCustomization: AP_PaySDK.ults_TextBoxCustomization) throws
-  @objc func getButtonCustomization(_ buttonType: AP_PaySDK.ults_ButtonType) throws -> AP_PaySDK.ults_ButtonCustomization
-  @objc func getToolbarCustomization() throws -> AP_PaySDK.ults_ToolbarCustomization
-  @objc func getLabelCustomization() throws -> AP_PaySDK.ults_LabelCustomization
-  @objc func getTextBoxCustomization() throws -> AP_PaySDK.ults_TextBoxCustomization
+@objc public protocol PaySDKUiCustomization {
+  @objc func setButtonCustomization(_ buttonCustomization: AP_PaySDK.PaySDKButtonCustomization, _ buttonType: AP_PaySDK.PaySDKButtonType) throws
+  @objc func setToolbarCustomization(_ toolbarCustomization: AP_PaySDK.PaySDKToolbarCustomization) throws
+  @objc func setLabelCustomization(_ labelCustomization: AP_PaySDK.PaySDKLabelCustomization) throws
+  @objc func setTextBoxCustomization(_ textBoxCustomization: AP_PaySDK.PaySDKTextBoxCustomization) throws
+  @objc func getButtonCustomization(_ buttonType: AP_PaySDK.PaySDKButtonType) throws -> AP_PaySDK.PaySDKButtonCustomization
+  @objc func getToolbarCustomization() throws -> AP_PaySDK.PaySDKToolbarCustomization
+  @objc func getLabelCustomization() throws -> AP_PaySDK.PaySDKLabelCustomization
+  @objc func getTextBoxCustomization() throws -> AP_PaySDK.PaySDKTextBoxCustomization
 }
-@objc open class Customization : ObjectiveC.NSObject, AP_PaySDK.ults_Customization {
+extension UITextField {
+  @objc override dynamic open func canPerformAction(_ action: ObjectiveC.Selector, withSender sender: Any?) -> Swift.Bool
+}
+@objc open class Customization : ObjectiveC.NSObject, AP_PaySDK.PaySDKCustomization {
   @objc override dynamic public init()
   @objc public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int)
   @objc public func setTextFontName(_ fontName: Swift.String) throws
@@ -317,7 +306,7 @@ extension UIButton {
   @objc public func getTextFontSize() -> Swift.Int
   @objc deinit
 }
-@objc open class ButtonCustomization : AP_PaySDK.Customization, AP_PaySDK.ults_ButtonCustomization {
+@objc open class ButtonCustomization : AP_PaySDK.Customization, AP_PaySDK.PaySDKButtonCustomization {
   @objc override dynamic public init()
   @objc public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int, _ backgroundColor: Swift.String, _ cornerRadius: Swift.Int)
   @objc public func setBackgroundColor(_ hexColorCode: Swift.String) throws
@@ -327,7 +316,7 @@ extension UIButton {
   @objc override public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int)
   @objc deinit
 }
-@objc open class ToolbarCustomization : AP_PaySDK.Customization, AP_PaySDK.ults_ToolbarCustomization {
+@objc open class ToolbarCustomization : AP_PaySDK.Customization, AP_PaySDK.PaySDKToolbarCustomization {
   @objc override dynamic public init()
   @objc public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int, _ backgroundColor: Swift.String, _ headerText: Swift.String)
   @objc public func setBackgroundColor(_ hexColorCode: Swift.String) throws
@@ -337,7 +326,7 @@ extension UIButton {
   @objc override public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int)
   @objc deinit
 }
-@objc open class LabelCustomization : AP_PaySDK.Customization, AP_PaySDK.ults_LabelCustomization {
+@objc open class LabelCustomization : AP_PaySDK.Customization, AP_PaySDK.PaySDKLabelCustomization {
   @objc override dynamic public init()
   @objc public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int, _ headingTextColor: Swift.String, _ headingTextFontName: Swift.String, _ headingTextFontSize: Swift.Int)
   @objc public func setHeadingTextColor(_ hexColorCode: Swift.String) throws
@@ -349,7 +338,7 @@ extension UIButton {
   @objc override public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int)
   @objc deinit
 }
-@objc open class TextBoxCustomization : AP_PaySDK.Customization, AP_PaySDK.ults_TextBoxCustomization {
+@objc open class TextBoxCustomization : AP_PaySDK.Customization, AP_PaySDK.PaySDKTextBoxCustomization {
   @objc override dynamic public init()
   @objc public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int, _ borderWidth: Swift.Int, _ borderColor: Swift.String, _ cornerRadius: Swift.Int)
   @objc public func setCornerRadius(_ cornerRadius: Swift.Int) throws
@@ -361,31 +350,28 @@ extension UIButton {
   @objc override public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int)
   @objc deinit
 }
-@objc open class UiCustomization : ObjectiveC.NSObject, AP_PaySDK.ults_UiCustomization {
+@objc open class UiCustomization : ObjectiveC.NSObject, AP_PaySDK.PaySDKUiCustomization {
   @objc override dynamic public init()
-  @objc public func setButtonCustomization(_ buttonCustomization: AP_PaySDK.ults_ButtonCustomization, _ buttonType: AP_PaySDK.ults_ButtonType) throws
-  @objc public func setToolbarCustomization(_ toolbarCustomization: AP_PaySDK.ults_ToolbarCustomization) throws
-  @objc public func setLabelCustomization(_ labelCustomization: AP_PaySDK.ults_LabelCustomization) throws
-  @objc public func setTextBoxCustomization(_ textBoxCustomization: AP_PaySDK.ults_TextBoxCustomization) throws
-  @objc public func getButtonCustomization(_ buttonType: AP_PaySDK.ults_ButtonType) throws -> AP_PaySDK.ults_ButtonCustomization
-  @objc public func getToolbarCustomization() throws -> AP_PaySDK.ults_ToolbarCustomization
-  @objc public func getLabelCustomization() throws -> AP_PaySDK.ults_LabelCustomization
-  @objc public func getTextBoxCustomization() throws -> AP_PaySDK.ults_TextBoxCustomization
+  @objc public func setButtonCustomization(_ buttonCustomization: AP_PaySDK.PaySDKButtonCustomization, _ buttonType: AP_PaySDK.PaySDKButtonType) throws
+  @objc public func setToolbarCustomization(_ toolbarCustomization: AP_PaySDK.PaySDKToolbarCustomization) throws
+  @objc public func setLabelCustomization(_ labelCustomization: AP_PaySDK.PaySDKLabelCustomization) throws
+  @objc public func setTextBoxCustomization(_ textBoxCustomization: AP_PaySDK.PaySDKTextBoxCustomization) throws
+  @objc public func getButtonCustomization(_ buttonType: AP_PaySDK.PaySDKButtonType) throws -> AP_PaySDK.PaySDKButtonCustomization
+  @objc public func getToolbarCustomization() throws -> AP_PaySDK.PaySDKToolbarCustomization
+  @objc public func getLabelCustomization() throws -> AP_PaySDK.PaySDKLabelCustomization
+  @objc public func getTextBoxCustomization() throws -> AP_PaySDK.PaySDKTextBoxCustomization
   @objc deinit
 }
 @objc(PayData) open class PayData : ObjectiveC.NSObject {
   @objc public var cardDetails: AP_PaySDK.CardDetails?
   @objc public var threeDSParams: AP_PaySDK.ThreeDSParams?
-  @objc public init(channelType: AP_PaySDK.PayChannel, envType: AP_PaySDK.EnvType, amount: Swift.String, payGate: AP_PaySDK.PayGate, currCode: AP_PaySDK.currencyCode, payType: AP_PaySDK.payType, orderRef: Swift.String, payMethod: AP_PaySDK.payMethod, lang: AP_PaySDK.Language, merchantId: Swift.String, remark: Swift.String, extraData: [Swift.String : Any]?)
+  @objc public init(channelType: AP_PaySDK.PayChannel, envType: AP_PaySDK.EnvType, amount: Swift.String, payGate: AP_PaySDK.PayGate, currCode: AP_PaySDK.CurrencyCode, payType: AP_PaySDK.payType, orderRef: Swift.String, payMethod: Swift.String, lang: AP_PaySDK.Language, merchantId: Swift.String, remark: Swift.String, extraData: [Swift.String : Any]?)
   @objc override dynamic public init()
   @objc deinit
 }
 extension AP_PaySDK.Language : Swift.Equatable {}
 extension AP_PaySDK.Language : Swift.Hashable {}
 extension AP_PaySDK.Language : Swift.RawRepresentable {}
-extension AP_PaySDK.payMethod : Swift.Equatable {}
-extension AP_PaySDK.payMethod : Swift.Hashable {}
-extension AP_PaySDK.payMethod : Swift.RawRepresentable {}
 extension AP_PaySDK.payType : Swift.Equatable {}
 extension AP_PaySDK.payType : Swift.Hashable {}
 extension AP_PaySDK.payType : Swift.RawRepresentable {}
@@ -398,15 +384,15 @@ extension AP_PaySDK.PayChannel : Swift.RawRepresentable {}
 extension AP_PaySDK.EnvType : Swift.Equatable {}
 extension AP_PaySDK.EnvType : Swift.Hashable {}
 extension AP_PaySDK.EnvType : Swift.RawRepresentable {}
-extension AP_PaySDK.currencyCode : Swift.Equatable {}
-extension AP_PaySDK.currencyCode : Swift.Hashable {}
-extension AP_PaySDK.currencyCode : Swift.RawRepresentable {}
+extension AP_PaySDK.CurrencyCode : Swift.Equatable {}
+extension AP_PaySDK.CurrencyCode : Swift.Hashable {}
+extension AP_PaySDK.CurrencyCode : Swift.RawRepresentable {}
 extension AP_PaySDK.ApplePayButtonType : Swift.Equatable {}
 extension AP_PaySDK.ApplePayButtonType : Swift.Hashable {}
 extension AP_PaySDK.ApplePayButtonType : Swift.RawRepresentable {}
 extension AP_PaySDK.ApplePayButtonStyle : Swift.Equatable {}
 extension AP_PaySDK.ApplePayButtonStyle : Swift.Hashable {}
 extension AP_PaySDK.ApplePayButtonStyle : Swift.RawRepresentable {}
-extension AP_PaySDK.ults_ButtonType : Swift.Equatable {}
-extension AP_PaySDK.ults_ButtonType : Swift.Hashable {}
-extension AP_PaySDK.ults_ButtonType : Swift.RawRepresentable {}
+extension AP_PaySDK.PaySDKButtonType : Swift.Equatable {}
+extension AP_PaySDK.PaySDKButtonType : Swift.Hashable {}
+extension AP_PaySDK.PaySDKButtonType : Swift.RawRepresentable {}
