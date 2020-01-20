@@ -280,27 +280,28 @@ typedef SWIFT_ENUM(NSInteger, CurrencyCode, open) {
   CurrencyCodeUSD = 1,
   CurrencyCodeSGD = 2,
   CurrencyCodeRMB = 3,
-  CurrencyCodeYEN = 4,
-  CurrencyCodeJPY = 5,
-  CurrencyCodeTWD = 6,
-  CurrencyCodeAUD = 7,
-  CurrencyCodeEUR = 8,
-  CurrencyCodeGBP = 9,
-  CurrencyCodeCAD = 10,
-  CurrencyCodeMOP = 11,
-  CurrencyCodePHP = 12,
-  CurrencyCodeTHB = 13,
-  CurrencyCodeIDR = 14,
-  CurrencyCodeBND = 15,
-  CurrencyCodeMYR = 16,
-  CurrencyCodeBRL = 17,
-  CurrencyCodeINR = 18,
-  CurrencyCodeTRY = 19,
-  CurrencyCodeZAR = 20,
-  CurrencyCodeVND = 21,
-  CurrencyCodeLKR = 22,
-  CurrencyCodeKWD = 23,
-  CurrencyCodeNZD = 24,
+  CurrencyCodeCNY = 4,
+  CurrencyCodeYEN = 5,
+  CurrencyCodeJPY = 6,
+  CurrencyCodeTWD = 7,
+  CurrencyCodeAUD = 8,
+  CurrencyCodeEUR = 9,
+  CurrencyCodeGBP = 10,
+  CurrencyCodeCAD = 11,
+  CurrencyCodeMOP = 12,
+  CurrencyCodePHP = 13,
+  CurrencyCodeTHB = 14,
+  CurrencyCodeIDR = 15,
+  CurrencyCodeBND = 16,
+  CurrencyCodeMYR = 17,
+  CurrencyCodeBRL = 18,
+  CurrencyCodeINR = 19,
+  CurrencyCodeTRY = 20,
+  CurrencyCodeZAR = 21,
+  CurrencyCodeVND = 22,
+  CurrencyCodeLKR = 23,
+  CurrencyCodeKWD = 24,
+  CurrencyCodeNZD = 25,
 };
 
 
@@ -378,6 +379,7 @@ typedef SWIFT_ENUM(NSInteger, PayGate, open) {
   PayGatePAYDOLLAR = 0,
   PayGatePESOPAY = 1,
   PayGateSIAMPAY = 2,
+  PayGatePAYDOLLART = 3,
 };
 
 
@@ -413,6 +415,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PaySDK * _Nonnull shar
 @property (nonatomic, strong) id <PaySDKDelegate> _Nullable delegate;
 @property (nonatomic, strong) PayData * _Null_unspecified paymentDetails;
 @property (nonatomic, strong) UiCustomization * _Nullable uiCustomization;
+@property (nonatomic) BOOL isBioMetricRequired;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (void)process;
 - (void)invalidateToken;
@@ -561,9 +564,13 @@ SWIFT_CLASS("_TtC9AP_PaySDK20ToolbarCustomization")
 
 
 
+
+
 @interface UIColor (SWIFT_EXTENSION(AP_PaySDK))
 - (nullable instancetype)initWithHex:(NSString * _Nonnull)hex;
 @end
+
+
 
 
 
@@ -901,27 +908,28 @@ typedef SWIFT_ENUM(NSInteger, CurrencyCode, open) {
   CurrencyCodeUSD = 1,
   CurrencyCodeSGD = 2,
   CurrencyCodeRMB = 3,
-  CurrencyCodeYEN = 4,
-  CurrencyCodeJPY = 5,
-  CurrencyCodeTWD = 6,
-  CurrencyCodeAUD = 7,
-  CurrencyCodeEUR = 8,
-  CurrencyCodeGBP = 9,
-  CurrencyCodeCAD = 10,
-  CurrencyCodeMOP = 11,
-  CurrencyCodePHP = 12,
-  CurrencyCodeTHB = 13,
-  CurrencyCodeIDR = 14,
-  CurrencyCodeBND = 15,
-  CurrencyCodeMYR = 16,
-  CurrencyCodeBRL = 17,
-  CurrencyCodeINR = 18,
-  CurrencyCodeTRY = 19,
-  CurrencyCodeZAR = 20,
-  CurrencyCodeVND = 21,
-  CurrencyCodeLKR = 22,
-  CurrencyCodeKWD = 23,
-  CurrencyCodeNZD = 24,
+  CurrencyCodeCNY = 4,
+  CurrencyCodeYEN = 5,
+  CurrencyCodeJPY = 6,
+  CurrencyCodeTWD = 7,
+  CurrencyCodeAUD = 8,
+  CurrencyCodeEUR = 9,
+  CurrencyCodeGBP = 10,
+  CurrencyCodeCAD = 11,
+  CurrencyCodeMOP = 12,
+  CurrencyCodePHP = 13,
+  CurrencyCodeTHB = 14,
+  CurrencyCodeIDR = 15,
+  CurrencyCodeBND = 16,
+  CurrencyCodeMYR = 17,
+  CurrencyCodeBRL = 18,
+  CurrencyCodeINR = 19,
+  CurrencyCodeTRY = 20,
+  CurrencyCodeZAR = 21,
+  CurrencyCodeVND = 22,
+  CurrencyCodeLKR = 23,
+  CurrencyCodeKWD = 24,
+  CurrencyCodeNZD = 25,
 };
 
 
@@ -999,6 +1007,7 @@ typedef SWIFT_ENUM(NSInteger, PayGate, open) {
   PayGatePAYDOLLAR = 0,
   PayGatePESOPAY = 1,
   PayGateSIAMPAY = 2,
+  PayGatePAYDOLLART = 3,
 };
 
 
@@ -1034,6 +1043,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PaySDK * _Nonnull shar
 @property (nonatomic, strong) id <PaySDKDelegate> _Nullable delegate;
 @property (nonatomic, strong) PayData * _Null_unspecified paymentDetails;
 @property (nonatomic, strong) UiCustomization * _Nullable uiCustomization;
+@property (nonatomic) BOOL isBioMetricRequired;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (void)process;
 - (void)invalidateToken;
@@ -1182,9 +1192,13 @@ SWIFT_CLASS("_TtC9AP_PaySDK20ToolbarCustomization")
 
 
 
+
+
 @interface UIColor (SWIFT_EXTENSION(AP_PaySDK))
 - (nullable instancetype)initWithHex:(NSString * _Nonnull)hex;
 @end
+
+
 
 
 
