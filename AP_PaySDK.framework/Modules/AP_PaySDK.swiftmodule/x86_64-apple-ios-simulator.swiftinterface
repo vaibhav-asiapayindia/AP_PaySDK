@@ -9,6 +9,7 @@ import CoreLocation
 import Darwin
 import Dispatch
 import Foundation
+import LocalAuthentication
 import MobileCoreServices
 import PassKit
 import QuartzCore
@@ -122,6 +123,7 @@ open class ThreeDSParams : ObjectiveC.NSObject {
   case PAYDOLLAR
   case PESOPAY
   case SIAMPAY
+  case PAYDOLLART
   public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
@@ -152,6 +154,7 @@ open class ThreeDSParams : ObjectiveC.NSObject {
   case USD
   case SGD
   case RMB
+  case CNY
   case YEN
   case JPY
   case TWD
@@ -217,6 +220,7 @@ infix operator >>> : DefaultPrecedence
   @objc public var delegate: AP_PaySDK.PaySDKDelegate?
   @objc public var paymentDetails: AP_PaySDK.PayData!
   @objc public var uiCustomization: AP_PaySDK.UiCustomization?
+  @objc public var isBioMetricRequired: Swift.Bool
   @objc override dynamic public init()
   public func setPublicKey(str: Swift.String)
   @objc public func process()
