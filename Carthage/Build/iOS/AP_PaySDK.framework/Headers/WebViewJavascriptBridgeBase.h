@@ -17,7 +17,7 @@ typedef void (^WVJBHandler)(id data, WVJBResponseCallback responseCallback);
 typedef NSDictionary WVJBMessage;
 
 @protocol WebViewJavascriptBridgeBaseDelegate <NSObject>
-//- (NSString*) _evaluateJavascript:(NSString*)javascriptCommand;
+- (NSString*) _evaluateJavascriptForWK:(NSString*)javascriptCommand;
 @end
 
 @interface WebViewJavascriptBridgeBase : NSObject

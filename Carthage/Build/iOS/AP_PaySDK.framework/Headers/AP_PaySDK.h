@@ -10,7 +10,11 @@
 #import "WebViewJavascriptBridge.h"
 #import "Wrapper.h"
 #import <CommonCrypto/CommonHMAC.h>
-//#import "Wrapper1.h"
+
+#import "WXApi.h"
+//#import "WXApiObject.h"
+//#import "WechatAuthSDK.h"
+
 
 
 //! Project version number for AP_PaySDK.

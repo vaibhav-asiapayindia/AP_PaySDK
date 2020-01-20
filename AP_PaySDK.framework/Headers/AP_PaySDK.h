@@ -12,8 +12,8 @@
 #import <CommonCrypto/CommonHMAC.h>
 
 #import "WXApi.h"
-#import "WXApiObject.h"
-#import "WechatAuthSDK.h"
+//#import "WXApiObject.h"
+//#import "WechatAuthSDK.h"
 
 
 
