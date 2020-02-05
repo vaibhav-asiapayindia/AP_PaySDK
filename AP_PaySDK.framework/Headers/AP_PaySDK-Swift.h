@@ -416,11 +416,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PaySDK * _Nonnull shar
 @property (nonatomic, strong) PayData * _Null_unspecified paymentDetails;
 @property (nonatomic, strong) UiCustomization * _Nullable uiCustomization;
 @property (nonatomic) BOOL isBioMetricRequired;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)process;
 - (void)invalidateToken;
 - (void)processOrderWithUrl:(NSURL * _Nonnull)url;
-- (BOOL)processOrderWeChatWithUrl:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -490,8 +490,6 @@ SWIFT_CLASS("_TtC9AP_PaySDK20TextBoxCustomization")
 
 SWIFT_CLASS("_TtC9AP_PaySDK13ThreeDSParams") SWIFT_AVAILABILITY(ios,introduced=11.0)
 @interface ThreeDSParams : NSObject
-@property (nonatomic, copy) NSString * _Nullable apiUsername;
-@property (nonatomic, copy) NSString * _Nullable apiPassword;
 @property (nonatomic, copy) NSString * _Nullable threeDSCustomerEmail;
 @property (nonatomic, copy) NSString * _Nullable threeDSDeliveryEmail;
 @property (nonatomic, copy) NSString * _Nullable threeDSMobilePhoneCountryCode;
@@ -558,7 +556,7 @@ SWIFT_CLASS("_TtC9AP_PaySDK20ToolbarCustomization")
 @class UIView;
 
 @interface UIButton (SWIFT_EXTENSION(AP_PaySDK))
-- (void)setApplePayButtonWithBtnType:(enum ApplePayButtonType)btnType btnStyle:(enum ApplePayButtonStyle)btnStyle view:(UIView * _Nonnull)view;
+- (void)setApplePayButtonWithBtnType:(enum ApplePayButtonType)btnType btnStyle:(enum ApplePayButtonStyle)btnStyle inView:(UIView * _Nonnull)inView;
 @end
 
 
@@ -1044,11 +1042,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PaySDK * _Nonnull shar
 @property (nonatomic, strong) PayData * _Null_unspecified paymentDetails;
 @property (nonatomic, strong) UiCustomization * _Nullable uiCustomization;
 @property (nonatomic) BOOL isBioMetricRequired;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)process;
 - (void)invalidateToken;
 - (void)processOrderWithUrl:(NSURL * _Nonnull)url;
-- (BOOL)processOrderWeChatWithUrl:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -1118,8 +1116,6 @@ SWIFT_CLASS("_TtC9AP_PaySDK20TextBoxCustomization")
 
 SWIFT_CLASS("_TtC9AP_PaySDK13ThreeDSParams") SWIFT_AVAILABILITY(ios,introduced=11.0)
 @interface ThreeDSParams : NSObject
-@property (nonatomic, copy) NSString * _Nullable apiUsername;
-@property (nonatomic, copy) NSString * _Nullable apiPassword;
 @property (nonatomic, copy) NSString * _Nullable threeDSCustomerEmail;
 @property (nonatomic, copy) NSString * _Nullable threeDSDeliveryEmail;
 @property (nonatomic, copy) NSString * _Nullable threeDSMobilePhoneCountryCode;
@@ -1186,7 +1182,7 @@ SWIFT_CLASS("_TtC9AP_PaySDK20ToolbarCustomization")
 @class UIView;
 
 @interface UIButton (SWIFT_EXTENSION(AP_PaySDK))
-- (void)setApplePayButtonWithBtnType:(enum ApplePayButtonType)btnType btnStyle:(enum ApplePayButtonStyle)btnStyle view:(UIView * _Nonnull)view;
+- (void)setApplePayButtonWithBtnType:(enum ApplePayButtonType)btnType btnStyle:(enum ApplePayButtonStyle)btnStyle inView:(UIView * _Nonnull)inView;
 @end
 
 

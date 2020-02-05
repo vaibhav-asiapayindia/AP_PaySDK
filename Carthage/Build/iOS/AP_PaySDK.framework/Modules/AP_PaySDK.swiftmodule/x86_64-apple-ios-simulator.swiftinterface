@@ -40,8 +40,6 @@ import WebKit
 }
 @objc @available(iOS 11.0, *)
 open class ThreeDSParams : ObjectiveC.NSObject {
-  @objc public var apiUsername: Swift.String?
-  @objc public var apiPassword: Swift.String?
   @objc public var threeDSCustomerEmail: Swift.String?
   @objc public var threeDSDeliveryEmail: Swift.String?
   @objc public var threeDSMobilePhoneCountryCode: Swift.String?
@@ -221,12 +219,9 @@ infix operator >>> : DefaultPrecedence
   @objc public var paymentDetails: AP_PaySDK.PayData!
   @objc public var uiCustomization: AP_PaySDK.UiCustomization?
   @objc public var isBioMetricRequired: Swift.Bool
-  @objc override dynamic public init()
-  public func setPublicKey(str: Swift.String)
   @objc public func process()
   @objc public func invalidateToken()
   @objc public func processOrder(url: Foundation.URL)
-  @objc public func processOrderWeChat(url: Foundation.URL) -> Swift.Bool
   @objc deinit
 }
 @objc public protocol PaySDKDelegate {
@@ -236,7 +231,7 @@ extension UIColor {
   @objc convenience dynamic public init?(hex: Swift.String)
 }
 extension UIButton {
-  @objc dynamic public func setApplePayButton(btnType: AP_PaySDK.ApplePayButtonType, btnStyle: AP_PaySDK.ApplePayButtonStyle, view: UIKit.UIView)
+  @objc dynamic public func setApplePayButton(btnType: AP_PaySDK.ApplePayButtonType, btnStyle: AP_PaySDK.ApplePayButtonStyle, inView: UIKit.UIView)
 }
 @objc public enum PaySDKButtonType : Swift.Int {
   case SUBMIT
