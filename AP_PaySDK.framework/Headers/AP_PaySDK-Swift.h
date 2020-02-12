@@ -368,9 +368,9 @@ SWIFT_CLASS_NAMED("PayData")
 @interface PayData : NSObject
 @property (nonatomic, strong) CardDetails * _Nullable cardDetails;
 @property (nonatomic, strong) ThreeDSParams * _Nullable threeDSParams;
-- (nonnull instancetype)initWithChannelType:(enum PayChannel)channelType envType:(enum EnvType)envType amount:(NSString * _Nonnull)amount payGate:(enum PayGate)payGate currCode:(enum CurrencyCode)currCode payType:(enum payType)payType orderRef:(NSString * _Nonnull)orderRef payMethod:(NSString * _Nonnull)payMethod lang:(enum Language)lang merchantId:(NSString * _Nonnull)merchantId remark:(NSString * _Nonnull)remark extraData:(NSDictionary<NSString *, id> * _Nullable)extraData OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nonnull instancetype)initWithChannelType:(enum PayChannel)channelType envType:(enum EnvType)envType amount:(NSString * _Nonnull)amount payGate:(enum PayGate)payGate currCode:(enum CurrencyCode)currCode payType:(enum payType)payType orderRef:(NSString * _Nonnull)orderRef payMethod:(NSString * _Nonnull)payMethod lang:(enum Language)lang merchantId:(NSString * _Nonnull)merchantId remark:(NSString * _Nonnull)remark extraData:(NSDictionary<NSString *, id> * _Nullable)extraData OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -416,6 +416,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PaySDK * _Nonnull shar
 @property (nonatomic, strong) PayData * _Null_unspecified paymentDetails;
 @property (nonatomic, strong) UiCustomization * _Nullable uiCustomization;
 @property (nonatomic) BOOL isBioMetricRequired;
+@property (nonatomic) BOOL useSDKProgressScreen;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)process;
@@ -437,6 +438,9 @@ typedef SWIFT_ENUM(NSInteger, PaySDKButtonType, open) {
 SWIFT_PROTOCOL("_TtP9AP_PaySDK14PaySDKDelegate_")
 @protocol PaySDKDelegate
 - (void)paymentResultWithResult:(PayResult * _Nonnull)result;
+@optional
+- (void)showProgress;
+- (void)hideProgress;
 @end
 
 
@@ -994,9 +998,9 @@ SWIFT_CLASS_NAMED("PayData")
 @interface PayData : NSObject
 @property (nonatomic, strong) CardDetails * _Nullable cardDetails;
 @property (nonatomic, strong) ThreeDSParams * _Nullable threeDSParams;
-- (nonnull instancetype)initWithChannelType:(enum PayChannel)channelType envType:(enum EnvType)envType amount:(NSString * _Nonnull)amount payGate:(enum PayGate)payGate currCode:(enum CurrencyCode)currCode payType:(enum payType)payType orderRef:(NSString * _Nonnull)orderRef payMethod:(NSString * _Nonnull)payMethod lang:(enum Language)lang merchantId:(NSString * _Nonnull)merchantId remark:(NSString * _Nonnull)remark extraData:(NSDictionary<NSString *, id> * _Nullable)extraData OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nonnull instancetype)initWithChannelType:(enum PayChannel)channelType envType:(enum EnvType)envType amount:(NSString * _Nonnull)amount payGate:(enum PayGate)payGate currCode:(enum CurrencyCode)currCode payType:(enum payType)payType orderRef:(NSString * _Nonnull)orderRef payMethod:(NSString * _Nonnull)payMethod lang:(enum Language)lang merchantId:(NSString * _Nonnull)merchantId remark:(NSString * _Nonnull)remark extraData:(NSDictionary<NSString *, id> * _Nullable)extraData OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -1042,6 +1046,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PaySDK * _Nonnull shar
 @property (nonatomic, strong) PayData * _Null_unspecified paymentDetails;
 @property (nonatomic, strong) UiCustomization * _Nullable uiCustomization;
 @property (nonatomic) BOOL isBioMetricRequired;
+@property (nonatomic) BOOL useSDKProgressScreen;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)process;
@@ -1063,6 +1068,9 @@ typedef SWIFT_ENUM(NSInteger, PaySDKButtonType, open) {
 SWIFT_PROTOCOL("_TtP9AP_PaySDK14PaySDKDelegate_")
 @protocol PaySDKDelegate
 - (void)paymentResultWithResult:(PayResult * _Nonnull)result;
+@optional
+- (void)showProgress;
+- (void)hideProgress;
 @end
 
 

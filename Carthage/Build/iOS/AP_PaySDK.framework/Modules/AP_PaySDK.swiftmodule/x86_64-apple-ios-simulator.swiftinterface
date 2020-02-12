@@ -35,7 +35,6 @@ import WebKit
   @objc public var transactionTime: Swift.String!
   @objc public var descriptionStr: Swift.String!
   @objc public var payMethod: Swift.String!
-  @objc override dynamic public init()
   @objc deinit
 }
 @objc @available(iOS 11.0, *)
@@ -207,7 +206,6 @@ open class ThreeDSParams : ObjectiveC.NSObject {
 }
 @objc(CardDetails) open class CardDetails : ObjectiveC.NSObject {
   @objc public init(cardHolderName: Swift.String, cardNo: Swift.String, expMonth: Swift.String, expYear: Swift.String, securityCode: Swift.String)
-  @objc override dynamic public init()
   @objc deinit
 }
 infix operator <- : DefaultPrecedence
@@ -219,6 +217,7 @@ infix operator >>> : DefaultPrecedence
   @objc public var paymentDetails: AP_PaySDK.PayData!
   @objc public var uiCustomization: AP_PaySDK.UiCustomization?
   @objc public var isBioMetricRequired: Swift.Bool
+  @objc public var useSDKProgressScreen: Swift.Bool
   @objc public func process()
   @objc public func invalidateToken()
   @objc public func processOrder(url: Foundation.URL)
@@ -226,6 +225,8 @@ infix operator >>> : DefaultPrecedence
 }
 @objc public protocol PaySDKDelegate {
   @objc func paymentResult(result: AP_PaySDK.PayResult)
+  @objc optional func showProgress()
+  @objc optional func hideProgress()
 }
 extension UIColor {
   @objc convenience dynamic public init?(hex: Swift.String)
@@ -365,7 +366,6 @@ extension UITextField {
   @objc public var cardDetails: AP_PaySDK.CardDetails?
   @objc public var threeDSParams: AP_PaySDK.ThreeDSParams?
   @objc public init(channelType: AP_PaySDK.PayChannel, envType: AP_PaySDK.EnvType, amount: Swift.String, payGate: AP_PaySDK.PayGate, currCode: AP_PaySDK.CurrencyCode, payType: AP_PaySDK.payType, orderRef: Swift.String, payMethod: Swift.String, lang: AP_PaySDK.Language, merchantId: Swift.String, remark: Swift.String, extraData: [Swift.String : Any]?)
-  @objc override dynamic public init()
   @objc deinit
 }
 extension AP_PaySDK.Language : Swift.Equatable {}
