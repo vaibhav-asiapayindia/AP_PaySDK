@@ -379,7 +379,6 @@ typedef SWIFT_ENUM(NSInteger, PayGate, open) {
   PayGatePAYDOLLAR = 0,
   PayGatePESOPAY = 1,
   PayGateSIAMPAY = 2,
-  PayGatePAYDOLLART = 3,
 };
 
 
@@ -583,11 +582,11 @@ SWIFT_CLASS("_TtC9AP_PaySDK20ToolbarCustomization")
 
 
 
-
-
 @interface UITextField (SWIFT_EXTENSION(AP_PaySDK))
 - (BOOL)canPerformAction:(SEL _Nonnull)action withSender:(id _Nullable)sender SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 
@@ -1009,7 +1008,6 @@ typedef SWIFT_ENUM(NSInteger, PayGate, open) {
   PayGatePAYDOLLAR = 0,
   PayGatePESOPAY = 1,
   PayGateSIAMPAY = 2,
-  PayGatePAYDOLLART = 3,
 };
 
 
@@ -1213,11 +1211,11 @@ SWIFT_CLASS("_TtC9AP_PaySDK20ToolbarCustomization")
 
 
 
-
-
 @interface UITextField (SWIFT_EXTENSION(AP_PaySDK))
 - (BOOL)canPerformAction:(SEL _Nonnull)action withSender:(id _Nullable)sender SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 
