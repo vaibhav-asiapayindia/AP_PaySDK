@@ -10,6 +10,6 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target  = '11.0'
   spec.swift_versions         = ['4', '4.1', '4.2', '5', '5.1']
   spec.vendored_frameworks    = 'AP_PaySDK.framework'
-  spec.source                 = { :git => 'https://github.com/vaibhav-asiapayindia/AP_PaySDK.git', :tag => spec.version }
-  # spec.source                 = { :http => 'https://test.paydollar.com/b2cDemo/PaySDK.zip' }
+  # spec.source                 = { :git => 'https://github.com/vaibhav-asiapayindia/AP_PaySDK.git', :tag => spec.version }
+  spec.source                 = { :http => 'https://raw.githubusercontent.com/vaibhav-asiapayindia/AP_PaySDK/master/PaySDK.zip' }
 end
